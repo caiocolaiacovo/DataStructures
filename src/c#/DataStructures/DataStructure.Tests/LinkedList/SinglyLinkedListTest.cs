@@ -27,7 +27,7 @@ namespace DataStructure.Tests.LinkedList
         public void Should_add_to_head_when_list_is_empty()
         {
             const string value = "Node value";
-            var newHead = new Node<string>(value, null);
+            var newHead = new SinglyLinkedListNode<string>(value, null);
             var expectedHead = newHead;
 
             _list.Add(value);
@@ -42,7 +42,7 @@ namespace DataStructure.Tests.LinkedList
             const string firstValue = "First value";
             const string newValue = "New value";
             _list.Add(firstValue);
-            var expectedNode = new Node<string>(newValue, null);
+            var expectedNode = new SinglyLinkedListNode<string>(newValue, null);
 
             _list.Add(newValue);
 
@@ -60,7 +60,7 @@ namespace DataStructure.Tests.LinkedList
             _list.Add(firstValue);
             _list.Add(secondValue);
             _list.Add(thirdValue);
-            var expectedNode = new Node<string>(newValue, null);
+            var expectedNode = new SinglyLinkedListNode<string>(newValue, null);
 
             _list.Add(newValue);
 
@@ -76,7 +76,7 @@ namespace DataStructure.Tests.LinkedList
             const string newFirstValue = "New first value";
             _list.Add(firstValue);
             _list.Add(secondValue);
-            var expectedHead = new Node<string>(newFirstValue, _list.Head);
+            var expectedHead = new SinglyLinkedListNode<string>(newFirstValue, _list.Head);
 
             _list.AddFirst(newFirstValue);
 
@@ -88,7 +88,7 @@ namespace DataStructure.Tests.LinkedList
         public void Should_add_first_to_head_when_list_is_empty()
         {
             const string value = "First value";
-            var expectedHead = new Node<string>(value, null);
+            var expectedHead = new SinglyLinkedListNode<string>(value, null);
 
             _list.AddFirst(value);
 
@@ -102,7 +102,7 @@ namespace DataStructure.Tests.LinkedList
             const string firstValue = "First value";
             const string newValue = "New value";
             _list.Add(firstValue);
-            var expectedHead = new Node<string>(newValue, _list.Head);
+            var expectedHead = new SinglyLinkedListNode<string>(newValue, _list.Head);
 
             _list.AddBefore(firstValue, newValue);
 
@@ -120,7 +120,7 @@ namespace DataStructure.Tests.LinkedList
             _list.Add(firstValue);
             _list.Add(secondValue);
             _list.Add(thirdValue);
-            var expectedNode = new Node<string>(newValue, _list.Head.Next.Next);
+            var expectedNode = new SinglyLinkedListNode<string>(newValue, _list.Head.Next.Next);
 
             _list.AddBefore(thirdValue, newValue);
 
