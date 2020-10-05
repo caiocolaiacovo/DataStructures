@@ -1,12 +1,16 @@
-﻿namespace DataStructures.LinkedList
+﻿using System;
+
+namespace DataStructures.LinkedList
 {
     public class SinglyLinkedList<T> where T : class
     {
         public SinglyLinkedListNode<T> Head { get; private set; }
 
-        public void Add(T data)
+        public void Add(T value)
         {
-            var newNode = new SinglyLinkedListNode<T>(data, null);
+            ValidateValue(value);
+
+            var newNode = new SinglyLinkedListNode<T>(value, null);
 
             if (Head == null)
             {
@@ -17,28 +21,55 @@
             AddNext(Head, newNode);
         }
 
-        public void AddFirst(T data)
+        public void AddFirst(T value)
         {
-            var newHead = new SinglyLinkedListNode<T>(data, Head);
+            ValidateValue(value);
+
+            var newHead = new SinglyLinkedListNode<T>(value, Head);
 
             Head = newHead;
         }
 
-        public void AddBefore(T data, T newData)
+        public void AddBefore(T value, T newValue)
         {
-            var newNode = new SinglyLinkedListNode<T>(newData, null);
+            ValidateValue(value);
+            ValidateValue(newValue);
+            ValidateIfListContainsElements();
 
-            if (Head.Value == data)
+            var newNode = new SinglyLinkedListNode<T>(newValue, null);
+
+            if (Head.Value == value)
             {
                 newNode.Next = Head;
                 Head = newNode;
+            }
 
+            var nodeFound = FindNodeWithNextValue(value, Head);
+            newNode.Next = nodeFound.Next;
+            nodeFound.Next = newNode;
+        }
+
+        public void AddAfter(T value, T newValue)
+        {
+            ValidateValue(value);
+            ValidateValue(newValue);
+            ValidateIfListContainsElements();
+
+            var nodeFound = FindNodeWithValue(value, Head);
+            var newNode = new SinglyLinkedListNode<T>(newValue, nodeFound.Next);
+            nodeFound.Next = newNode;
+        }
+
+        public void Remove(T value)
+        {
+            if (Head.Value == value)
+            {
+                Head = Head.Next;
                 return;
             }
 
-            var nodeFound = FindNodeWithNextData(data, Head);
-            newNode.Next = nodeFound.Next;
-            nodeFound.Next = newNode;
+            var nodeFound = FindNodeWithNextValue(value, Head);
+            nodeFound.Next = nodeFound.Next.Next;
         }
 
         private void AddNext(SinglyLinkedListNode<T> currentNode, SinglyLinkedListNode<T> next)
@@ -52,12 +83,38 @@
             AddNext(currentNode.Next, next);
         }
 
-        private SinglyLinkedListNode<T> FindNodeWithNextData(T data, SinglyLinkedListNode<T> node)
+        private SinglyLinkedListNode<T> FindNodeWithNextValue(T value, SinglyLinkedListNode<T> node)
         {
-            if (node.Next.Value == data)
+            if (node == null)
+                throw new Exception("Value does not exist in list");
+
+            if (node.Next != null && node.Next.Value == value)
                 return node;
 
-            return FindNodeWithNextData(data, node.Next);
+            return FindNodeWithNextValue(value, node.Next);
+        }
+
+        private SinglyLinkedListNode<T> FindNodeWithValue(T value, SinglyLinkedListNode<T> node)
+        {
+            if (node == null)
+                throw new Exception("Value does not exist in list");
+
+            if (node.Value == value)
+                return node;
+
+            return FindNodeWithValue(value, node.Next);
+        }
+
+        private void ValidateValue(T value)
+        {
+            if (value == null)
+                throw new ArgumentNullException();
+        }
+
+        private void ValidateIfListContainsElements()
+        {
+            if (Head == null)
+                throw new Exception("List is empty");
         }
     }
 }
