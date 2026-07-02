@@ -1,41 +1,35 @@
 namespace Dsa.DoublyLinkedList;
 
-public class DLLNode
+public class DLLNode<T>
 {
-    public int Key;
-    public int Value;
-    public int Frequency;
-    public DLLNode? Previous;
-    public DLLNode? Next;
+    public T Value;
+    public DLLNode<T>? Previous;
+    public DLLNode<T>? Next;
 
-    public DLLNode(int key, int value, int frequency, DLLNode? previous, DLLNode? next)
+    public DLLNode(T value)
     {
-        Key = key;
         Value = value;
-        Frequency = frequency;
-        Previous = previous;
-        Next = next;
     }
 }
 
-public class CustomDoublyLinkedList
+public class CustomDoublyLinkedList<T>
 {
-    public DLLNode? Head;
-    public DLLNode? Tail;
+    private DLLNode<T>? _head;
+    private DLLNode<T>? _tail;
     private int _count;
     public int Count => _count;
 
-    public DLLNode? First()
+    public DLLNode<T>? First()
     {
-        return Head;
+        return _head;
     }
 
-    public DLLNode? Last()
+    public DLLNode<T>? Last()
     {
-        return Tail;
+        return _tail;
     }
 
-    public void AddFirst(DLLNode? node)
+    public void AddFirst(DLLNode<T>? node)
     {
         if (node == null)
         {
@@ -44,20 +38,20 @@ public class CustomDoublyLinkedList
 
         _count++;
 
-        if (Head == null && Tail == null) //empty list
+        if (_head == null && _tail == null) //empty list
         {
-            Head = node;
-            Tail = node;
+            _head = node;
+            _tail = node;
             return;
         }
 
-        var oldHead = Head!;
+        var oldHead = _head!;
         oldHead.Previous = node;
         node.Next = oldHead;
-        Head = node;
+        _head = node;
     }
 
-    public void AddLast(DLLNode? node)
+    public void AddLast(DLLNode<T>? node)
     {
         if (node == null)
         {
@@ -66,20 +60,20 @@ public class CustomDoublyLinkedList
 
         _count++;
 
-        if (Head == null && Tail == null) //empty list
+        if (_head == null && _tail == null) //empty list
         {
-            Head = node;
-            Tail = node;
+            _head = node;
+            _tail = node;
             return;
         }
 
-        var oldTail = Tail!;
+        var oldTail = _tail!;
         oldTail.Next = node;
         node.Previous = oldTail;
-        Tail = node;
+        _tail = node;
     }
 
-    public void Remove(DLLNode? node)
+    public void Remove(DLLNode<T>? node)
     {
         if (node == null)
         {
@@ -87,25 +81,25 @@ public class CustomDoublyLinkedList
         }
 
         //only 1 element
-        if (Head == node && Tail == node)
+        if (_head == node && _tail == node)
         {
-            Head = null;
-            Tail = null;
+            _head = null;
+            _tail = null;
             _count--;
             return;
         }
 
-        if (Head == node)
+        if (_head == node)
         {
-            var newHead = Head.Next;
+            var newHead = _head.Next;
             node.Previous = null;
             node.Next = null;
-            Head = newHead;
+            _head = newHead;
             _count--;
             return;
         }
 
-        if (Tail == node)
+        if (_tail == node)
         {
             RemoveLast();
             return;
@@ -125,22 +119,22 @@ public class CustomDoublyLinkedList
 
     public void RemoveLast()
     {
-        if (Tail == null)
+        if (_tail == null)
         {
             return;
         }
 
         if (_count == 1)
         {
-            Head = null;
-            Tail = null;
+            _head = null;
+            _tail = null;
             _count--;
             return;
         }
 
-        var newTail = Tail.Previous;
+        var newTail = _tail.Previous;
         newTail.Next = null;
-        Tail = newTail;
+        _tail = newTail;
         _count--;
     }
 }

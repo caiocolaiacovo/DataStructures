@@ -2,13 +2,13 @@ using Dsa.DoublyLinkedList;
 
 namespace Dsa.Test;
 
-public class CustomDoublyLinkedListTest
+public class CustomDoublyLinkedListest
 {
     [Fact]
     public void Should_add_node_to_first_when_empty_list()
     {
-        var node = new DLLNode(1, 99, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node = new DLLNode<int>(99);
+        var dll = new CustomDoublyLinkedList<int>();
         
         dll.AddFirst(node);
 
@@ -21,7 +21,7 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_handle_null_node_when_adding_first()
     {
-        var dll = new CustomDoublyLinkedList();
+        var dll = new CustomDoublyLinkedList<int>();
 
         dll.AddFirst(null);
 
@@ -32,10 +32,10 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_add_node_to_first_when_list_has_more_than_one_element()
     {
-        var node1 = new DLLNode(1, 99, 0, null, null);
-        var node2 = new DLLNode(2, 10, 0, null, null);
-        var node3 = new DLLNode(3, 55, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node1 = new DLLNode<int>(99);
+        var node2 = new DLLNode<int>(10);
+        var node3 = new DLLNode<int>(55);
+        var dll = new CustomDoublyLinkedList<int>();
         dll.AddFirst(node1);
         dll.AddFirst(node2);
         var expectedCount = 3;
@@ -52,8 +52,8 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_add_node_to_last_when_empty_list()
     {
-        var node = new DLLNode(1, 99, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node = new DLLNode<int>(99);
+        var dll = new CustomDoublyLinkedList<int>();
 
         dll.AddLast(node);
         
@@ -66,7 +66,7 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_handle_null_node_when_adding_last()
     {
-        var dll = new CustomDoublyLinkedList();
+        var dll = new CustomDoublyLinkedList<int>();
 
         dll.AddLast(null);
 
@@ -77,10 +77,10 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_add_node_to_last_when_list_has_more_than_one_element()
     {
-        var node1 = new DLLNode(1, 99, 0, null, null);
-        var node2 = new DLLNode(2, 10, 0, null, null);
-        var node3 = new DLLNode(3, 55, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node1 = new DLLNode<int>(99);
+        var node2 = new DLLNode<int>(10);
+        var node3 = new DLLNode<int>(55);
+        var dll = new CustomDoublyLinkedList<int>();
         dll.AddLast(node1);
         dll.AddLast(node2);
         var expectedCount = 3;
@@ -97,8 +97,8 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_remove_node_when_list_has_only_one_element()
     {
-        var node = new DLLNode(1, 99, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node = new DLLNode<int>(99);
+        var dll = new CustomDoublyLinkedList<int>();
         dll.AddFirst(node);
 
         dll.Remove(node);
@@ -112,9 +112,9 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_remove_the_first_node()
     {
-        var node1 = new DLLNode(1, 99, 0, null, null);
-        var node2 = new DLLNode(2, 10, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node1 = new DLLNode<int>(99);
+        var node2 = new DLLNode<int>(10);
+        var dll = new CustomDoublyLinkedList<int>();
         dll.AddFirst(node1);
         dll.AddFirst(node2);
 
@@ -129,9 +129,9 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_remove_the_last_node()
     {
-        var node1 = new DLLNode(1, 999, 0, null, null);
-        var node2 = new DLLNode(2, 115, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node1 = new DLLNode<int>(99);
+        var node2 = new DLLNode<int>(15);
+        var dll = new CustomDoublyLinkedList<int>();
         dll.AddFirst(node1);
         dll.AddFirst(node2);
 
@@ -146,10 +146,10 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_remove_middle_node()
     {
-        var node1 = new DLLNode(1, 999, 0, null, null);
-        var node2 = new DLLNode(2, 115, 0, null, null);
-        var node3 = new DLLNode(3, 210, 0, null, null);
-        var dll = new CustomDoublyLinkedList();
+        var node1 = new DLLNode<int>(99);
+        var node2 = new DLLNode<int>(15);
+        var node3 = new DLLNode<int>(10);
+        var dll = new CustomDoublyLinkedList<int>();
         dll.AddFirst(node1);
         dll.AddFirst(node2);
         dll.AddFirst(node3);
@@ -167,7 +167,7 @@ public class CustomDoublyLinkedListTest
     [Fact]
     public void Should_handle_null_node_when_removing()
     {
-        var dll = new CustomDoublyLinkedList();
+        var dll = new CustomDoublyLinkedList<int>();
 
         dll.Remove(null);
 
