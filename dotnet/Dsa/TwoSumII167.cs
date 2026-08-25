@@ -1,16 +1,17 @@
 namespace Dsa;
 
 // https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
-public class TwoSumII167
+public static class TwoSumII167
 {
-    public int[] TwoSum(int[] numbers, int target)
+    // Time complexity: O(n) -> will iterate over the elements only once
+    // Space complexity: O(1) -> no extra space is used
+    public static int[] TwoSum(int[] numbers, int target)
     {
         var left = 0;
         var right = numbers.Length - 1;
 
         while (true)
         {
-            // Console.WriteLine($"left {left}");
             var sum = numbers[left] + numbers[right];
 
             if (sum == target)

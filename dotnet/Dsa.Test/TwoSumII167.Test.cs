@@ -8,7 +8,7 @@ public class TwoSumII167Test
     [InlineData(new int[] { -1, 0 }, -1, new int[] { 1, 2 })]
     public void Should_return_indices_of_two_numbers_that_add_up_to_target(int[] numbers, int target, int[] expected)
     {
-        var output = new TwoSumII167().TwoSum(numbers, target);
+        var output = TwoSumII167.TwoSum(numbers, target);
 
         Assert.Equal(expected, output);
     }
