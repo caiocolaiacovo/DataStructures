@@ -8,7 +8,7 @@ This repository contains implementations of fundamental data structures and algo
 
 ## Project Structure
 
-### C# (.NET 8)
+### C# (.NET 10)
 Located in `dotnet/Dsa/`, this section includes:
 
 #### Arrays & Strings
@@ -16,6 +16,9 @@ Located in `dotnet/Dsa/`, this section includes:
 - **Search Insert Position** (`SearchInsertPosition35.cs`) - Binary search variant to find insert position [LeetCode 35](https://leetcode.com/problems/search-insert-position/)
 - **Find Peak Element** (`FindPeakElement162.cs`) - Find an element greater than its neighbors [LeetCode 162](https://leetcode.com/problems/find-peak-element/)
 - **Range Sum Query** (`RangeSumQuery303.cs`) - Prefix sum optimization [LeetCode 303](https://leetcode.com/problems/range-sum-query-immutable/)
+- **Two Sum II** (`TwoSumII167.cs`) - Two-pointer technique on a sorted array [LeetCode 167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+- **Remove Duplicates from Sorted Array** (`RemoveDuplicatesfromSortedArray26.cs`) - In-place deduplication with two pointers [LeetCode 26](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+- **Move Zeroes** (`MoveZeroes283.cs`) - In-place array manipulation keeping the relative order [LeetCode 283](https://leetcode.com/problems/move-zeroes/)
 
 #### Binary Trees
 - **Binary Trees** (`BinaryTree.cs`) - DFS/BFS traversals, tree operations
@@ -55,6 +58,7 @@ Located in `dotnet/Dsa/`, this section includes:
 #### Codility
 - **Arr List Len** (`CodilityArrListLen.cs`) - Find the length of a linked list encoded as an array [Codility Training 7](https://app.codility.com/programmers/trainings/7/arr_list_len/)
 - **Count Bounded Slices** (`CodilityCountBoundedSlices.cs`) - Count slices where max−min ≤ K [Codility Training 7](https://app.codility.com/programmers/trainings/7/count_bounded_slices/)
+- **Countries Count** (`CodilityCountriesCount.cs`) - Count distinct countries in a color grid using DFS flood-fill
 
 #### Collections & Concurrency
 - **Collections** (`Collections.cs`) - Comparison of .NET collections
