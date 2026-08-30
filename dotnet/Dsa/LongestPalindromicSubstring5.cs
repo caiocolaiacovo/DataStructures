@@ -3,10 +3,10 @@ namespace Dsa;
 public class LongestPalindromicSubstring5
 {
     // Time complexity:
-    //      external loop: O(n) -> will iterate over the elements only once
-    //      odd while loop: O(n) -> will expand the palindrome from the center to the left and right
-    //      even while loop: O(n) -> same as above
-    //      total: O(n) * O(n + n) -> O(n) * O(2n) -> O(n^2)
+    //      external loop: n -> will iterate over the elements only once
+    //      odd while loop: n -> will expand the palindrome from the center to the left and right
+    //      even while loop: n -> same as above
+    //      total: n * (n + n) == n * 2n == n * n == n^2 -> O(n^2)
     // Space complexity: O(1) -> no extra space is used
     public static string LongestPalindrome(string s)
     {
