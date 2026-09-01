@@ -45,4 +45,23 @@ public class SlidingWindowTest
 
         Assert.Equal(expected, result);
     }
+
+    // maxSubarrayProductSizeK([4, 2, 1, -9, 8, 2, 3], 3); // -> 48
+    // maxSubarrayProductSizeK([-9, 1, -8, 2, 3, 7], 3); // -> 72
+    // maxSubarrayProductSizeK([7, 4, -5, -7, 8, -10, -1], 2); // -> 35
+    // maxSubarrayProductSizeK([60, 20, 10, 90, 50], 1); // -> 90
+    // maxSubarrayProductSizeK([1,2,3,4], 4); // -> 24
+    // for loop 50000
+    // for loop 120000
+    [Theory]
+    [InlineData(new int[] { 4, 2, 1, -9, 8, 2, 3 }, 3, 48)]
+    [InlineData(new int[] { -9, 1, -8, 2, 3, 7 }, 3, 72)]
+    [InlineData(new int[] { 7, 4, -5, -7, 8, -10, -1 }, 2, 35)]
+    [InlineData(new int[] { 60, 20, 10, 90, 50 }, 1, 90)]
+    [InlineData(new int[] { 1, 2, 3, 4 }, 4, 24)]
+    public void TestMaxSubarrayProductSizeK(int[] nums, int k, int expected)
+    {
+        var result = SlidingWindow.MaxSubarrayProductSizeK(nums, k);
+        Assert.Equal(expected, result);
+    }
 }
