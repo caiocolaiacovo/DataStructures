@@ -47,4 +47,59 @@ public class SlidingWindow
         }
         return maxProduct;
     }
+
+    // Time complexity: O(n)
+    //      first window setup = O(k)
+    //      number of subarrays = n - k
+    //      work per subarray = 2 (leading and trailing elements)
+    //      O(k + (n - k) * 2) -> O(k + (n - k)) -> O(n)
+    // Space complexity: O(1)
+    public static int SubarrayTargetSumSizeK(int[] nums, int target, int k)
+    {
+        var sum = nums.Take(k).Sum();
+        var count = sum == target ? 1 : 0;
+
+        for(int i = 0; i < nums.Length - k; i++)
+        {
+            sum -= nums[i];
+            sum += nums[i + k];
+            if (sum == target)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    // Time complexity: O(n * k)
+    //      anagram length = k
+    //      string length = n
+    //      number of subarrays = n - k
+    //      O((n - k) * k) (second k is the comparision between sets) -> O(n * k - k * k) -> O(n * k) (n*k is bigger than k^2, so drop k^2)
+    // Space complexity: O(2 * k) -> O(k)
+    public static bool HasSubstringAnagram(string s, string anagram)
+    {
+        var k = anagram.Length;
+        var anagramSet = new HashSet<char>(anagram[..]);
+        var windowSet = new HashSet<char>(s[..k]);
+        
+        if (windowSet.SetEquals(anagramSet))
+        {
+            return true;
+        }
+
+        for(int i = 0; i < s.Length - k; i++)
+        {
+            windowSet.Remove(s[i]);
+            windowSet.Add(s[i + k]);
+            if (windowSet.SetEquals(anagramSet))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
+// "greyhounds", "hoy"

@@ -64,4 +64,37 @@ public class SlidingWindowTest
         var result = SlidingWindow.MaxSubarrayProductSizeK(nums, k);
         Assert.Equal(expected, result);
     }
+
+    // subarrayTargetSumSizeK([2, 3, 2, 2, 3, 1, 3, 8, 5, 0, 2, 4], 7, 3); // -> 5
+    // subarrayTargetSumSizeK([2, 3, 2], 7, 3); // -> 1
+    // subarrayTargetSumSizeK([1, 2, 2, 2, 2, 4, 6, 5, 1, 2, 0, 10, -2, 7], 8, 4); // -> 2
+    // for loop 50000
+    [Theory]
+    [InlineData(new int[] { 2, 3, 2, 2, 3, 1, 3, 8, 5, 0, 2, 4 }, 7, 3, 5)]
+    [InlineData(new int[] { 2, 3, 2 }, 7, 3, 1)]
+    [InlineData(new int[] { 1, 2, 2, 2, 2, 4, 6, 5, 1, 2, 0, 10, -2, 7 }, 8, 4, 2)]
+    public void TestSubarrayTargetSumSizeK(int[] nums, int target, int k, int expected)
+    {
+        var result = SlidingWindow.SubarrayTargetSumSizeK(nums, target, k);
+        Assert.Equal(expected, result);
+    }
+
+    // hasSubstringAnagram("greyhounds", "hoy"); // -> true
+    // hasSubstringAnagram("gruyheonds", "hoy"); // -> false
+    // hasSubstringAnagram("breakdowns", "snow"); // -> true
+    // hasSubstringAnagram("dermatoglyphics", "red"); // -> true
+    // hasSubstringAnagram("southernly", "thorny"); // -> false
+    // hasSubstringAnagram("southernly", "nerlysouth"); // -> true
+    [Theory]
+    [InlineData("greyhounds", "hoy", true)]
+    [InlineData("gruyheonds", "hoy", false)]
+    [InlineData("breakdowns", "snow", true)]
+    [InlineData("dermatoglyphics", "red", true)]
+    [InlineData("southernly", "thorny", false)]
+    [InlineData("southernly", "nerlysouth", true)]
+    public void TestHasSubstringAnagram(string s, string anagram, bool expected)
+    {
+        var result = SlidingWindow.HasSubstringAnagram(s, anagram);
+        Assert.Equal(expected, result);
+    }
 }
