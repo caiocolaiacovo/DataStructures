@@ -93,4 +93,15 @@ public class SlidingWindowTest
         var result = SlidingWindow.CountSubstringAnagrams(s, anagram);
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData(new int[] { 1, 2, 3, 7, 5 }, 12, new int[] { 1, 3 })]
+    [InlineData(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 15, new int[] { 0, 4 })]
+    [InlineData(new int[] { 3, 1, 4, 9, 2, 1, 7 }, 10, new int[] { 4, 6 })]
+    [InlineData(new int[] { 3, 1, 4, 9, 2, 1, 7 }, 11, new int[] { 3, 4 })]
+    public void TestFindSubarraySum(int[] nums, int target, int[] expected)
+    {
+        var result = SlidingWindow.FindSubarraySum(nums, target);
+        Assert.Equal(expected, result);
+    }
 }

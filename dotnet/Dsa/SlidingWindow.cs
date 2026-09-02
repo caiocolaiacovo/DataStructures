@@ -150,4 +150,35 @@ public class SlidingWindow
 
         return count;
     }
+
+    // Time complexity: O(n)
+    //      end pointer = n
+    //      start pointer = n
+    //      O(2 * n) -> O(n)
+    // Space complexity: O(1)
+    public static int[] FindSubarraySum(int[] nums, int targetSum)
+    {
+        var start = 0;
+        var windowSum = 0;
+
+        for(int end = 0; end < nums.Length; end++)
+        {
+            windowSum += nums[end];
+
+            while(windowSum > targetSum)
+            {
+                windowSum -= nums[start];
+                start++;
+            }
+
+            if (windowSum == targetSum)
+            {
+                return [start, end];
+            }
+        }
+        return [];
+    }
 }
+//              s     e
+// [3, 1, 4, 9, 2, 1, 7], 10
+// sum=10
