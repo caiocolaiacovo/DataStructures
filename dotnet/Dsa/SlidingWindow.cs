@@ -178,7 +178,35 @@ public class SlidingWindow
         }
         return [];
     }
+
+    // Time complexity: O(n)
+    //      start pointer = n
+    //      end pointer = n
+    //      O(2n) -> O(n)
+    // Space complexity: O(1)
+    public static int LongestSubarraySum(int[] nums, int targetSum)
+    {
+        var start = 0;
+        var windowSum = 0;
+        var longest = -1;
+
+        for(int end = 0; end < nums.Length; end++)
+        {
+            windowSum += nums[end];
+
+            while(windowSum > targetSum)
+            {
+                windowSum -= nums[start];
+                start++;
+            }
+
+            var windowSize = end - start + 1;
+            if (targetSum == windowSum && windowSize > longest)
+            {
+                longest = windowSize;
+            }
+        }
+
+        return longest;
+    }
 }
-//              s     e
-// [3, 1, 4, 9, 2, 1, 7], 10
-// sum=10

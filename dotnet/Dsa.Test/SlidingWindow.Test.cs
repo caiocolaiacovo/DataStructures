@@ -104,4 +104,18 @@ public class SlidingWindowTest
         var result = SlidingWindow.FindSubarraySum(nums, target);
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData(new int[] { 1, 2, 1, 5, 2, 3, 10, 1, 9, 4, 3, 3, 7 }, 10, 4)]
+    [InlineData(new int[] { 7, 2, 4, 2, 1 }, 5, -1)]
+    [InlineData(new int[] { 4, 2, 2, 2, 1, 1 }, 6, 4)]
+    [InlineData(new int[] { 1, 5, 2, 4, 9, 2 }, 11, 3)]
+    [InlineData(new int[] { 10, 4, 8, 4 }, 8, 1)]
+    [InlineData(new int[] { 10, 4, 8, 0, 4 }, 8, 2)]
+    [InlineData(new int[] { 2, 4, 1, 1, 2 }, 10, 5)]
+    public void TestLongestSubarraySum(int[] nums, int target, int expected)
+    {
+        var result = SlidingWindow.LongestSubarraySum(nums, target);
+        Assert.Equal(expected, result);
+    }
 }
