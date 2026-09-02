@@ -46,13 +46,6 @@ public class SlidingWindowTest
         Assert.Equal(expected, result);
     }
 
-    // maxSubarrayProductSizeK([4, 2, 1, -9, 8, 2, 3], 3); // -> 48
-    // maxSubarrayProductSizeK([-9, 1, -8, 2, 3, 7], 3); // -> 72
-    // maxSubarrayProductSizeK([7, 4, -5, -7, 8, -10, -1], 2); // -> 35
-    // maxSubarrayProductSizeK([60, 20, 10, 90, 50], 1); // -> 90
-    // maxSubarrayProductSizeK([1,2,3,4], 4); // -> 24
-    // for loop 50000
-    // for loop 120000
     [Theory]
     [InlineData(new int[] { 4, 2, 1, -9, 8, 2, 3 }, 3, 48)]
     [InlineData(new int[] { -9, 1, -8, 2, 3, 7 }, 3, 72)]
@@ -65,10 +58,6 @@ public class SlidingWindowTest
         Assert.Equal(expected, result);
     }
 
-    // subarrayTargetSumSizeK([2, 3, 2, 2, 3, 1, 3, 8, 5, 0, 2, 4], 7, 3); // -> 5
-    // subarrayTargetSumSizeK([2, 3, 2], 7, 3); // -> 1
-    // subarrayTargetSumSizeK([1, 2, 2, 2, 2, 4, 6, 5, 1, 2, 0, 10, -2, 7], 8, 4); // -> 2
-    // for loop 50000
     [Theory]
     [InlineData(new int[] { 2, 3, 2, 2, 3, 1, 3, 8, 5, 0, 2, 4 }, 7, 3, 5)]
     [InlineData(new int[] { 2, 3, 2 }, 7, 3, 1)]
@@ -79,12 +68,6 @@ public class SlidingWindowTest
         Assert.Equal(expected, result);
     }
 
-    // hasSubstringAnagram("greyhounds", "hoy"); // -> true
-    // hasSubstringAnagram("gruyheonds", "hoy"); // -> false
-    // hasSubstringAnagram("breakdowns", "snow"); // -> true
-    // hasSubstringAnagram("dermatoglyphics", "red"); // -> true
-    // hasSubstringAnagram("southernly", "thorny"); // -> false
-    // hasSubstringAnagram("southernly", "nerlysouth"); // -> true
     [Theory]
     [InlineData("greyhounds", "hoy", true)]
     [InlineData("gruyheonds", "hoy", false)]
@@ -95,6 +78,19 @@ public class SlidingWindowTest
     public void TestHasSubstringAnagram(string s, string anagram, bool expected)
     {
         var result = SlidingWindow.HasSubstringAnagram(s, anagram);
+        Assert.Equal(expected, result);
+    }
+
+    [Theory]
+    [InlineData("tacoctacabcatt", "cat", 4)]
+    [InlineData("qtqt", "qt", 3)]
+    [InlineData("gattactat", "att", 3)]
+    [InlineData("gattactat", "tag", 1)]
+    [InlineData("rreeadreaerrand", "reade", 4)]
+    [InlineData("versorevairlg", "serve", 0)]
+    public void TestCountSubstringAnagrams(string s, string anagram, int expected)
+    {
+        var result = SlidingWindow.CountSubstringAnagrams(s, anagram);
         Assert.Equal(expected, result);
     }
 }

@@ -101,5 +101,53 @@ public class SlidingWindow
 
         return false;
     }
+
+    // Time complexity: O(n * k)
+    //      anagram size = k
+    //      number of subarrays = n - k
+    //      number of operations per subarray = 2
+    //      initial setup = k
+    //      maps comparision = k
+    //      O(k * (n - k) + k + 2) -> O(k * (n - k) + k) -> O(nk - k^2 + k) -> O(n * k)
+    // Space complexity: O(k + k) -> O(k)
+    public static int CountSubstringAnagrams(string s, string anagram)
+    {
+        var k = anagram.Length;
+        var anagramHash = new Dictionary<char, int>();
+        var windowHash = new Dictionary<char, int>();
+
+        for(int i = 0; i < k; i++)
+        {
+            anagramHash.TryGetValue(anagram[i], out var valueAnagram);
+            anagramHash[anagram[i]] = valueAnagram + 1;
+            windowHash.TryGetValue(s[i], out var valueWindow);
+            windowHash[s[i]] = valueWindow + 1;
+        }
+
+        var count = anagramHash.Count == windowHash.Count && !anagramHash.Except(windowHash).Any() ? 1 : 0;
+
+        for(int i = 0; i < s.Length - k; i++)
+        {
+            var trailingChar = s[i];
+            windowHash.TryGetValue(trailingChar, out var valueToRemove);
+            if (valueToRemove == 1)
+            {
+                windowHash.Remove(trailingChar);
+            }
+            else
+            {
+                windowHash[trailingChar] = valueToRemove - 1;
+            }
+            var leadingChar = s[i + k];
+            windowHash.TryGetValue(leadingChar, out var value);
+            windowHash[leadingChar] = value + 1;
+
+            if(anagramHash.Count == windowHash.Count && !anagramHash.Except(windowHash).Any())
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
-// "greyhounds", "hoy"
