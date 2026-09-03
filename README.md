@@ -19,6 +19,19 @@ Located in `dotnet/Dsa/`, this section includes:
 - **Two Sum II** (`TwoSumII167.cs`) - Two-pointer technique on a sorted array [LeetCode 167](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 - **Remove Duplicates from Sorted Array** (`RemoveDuplicatesfromSortedArray26.cs`) - In-place deduplication with two pointers [LeetCode 26](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 - **Move Zeroes** (`MoveZeroes283.cs`) - In-place array manipulation keeping the relative order [LeetCode 283](https://leetcode.com/problems/move-zeroes/)
+- **Subarray Sum Equals K** (`SubarraySumEqualsK560.cs`) - Count subarrays summing to k using prefix sums in a dictionary [LeetCode 560](https://leetcode.com/problems/subarray-sum-equals-k/)
+- **Minimum Value to Get Positive Step by Step Sum** (`MinimumValuetoGetPositiveStepbyStepSum1413.cs`) - Track the minimum running prefix sum [LeetCode 1413](https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/)
+- **Valid Palindrome** (`ValidPalindrome125.cs`) - Two-pointer palindrome check ignoring non-alphanumeric characters [LeetCode 125](https://leetcode.com/problems/valid-palindrome/)
+- **Longest Palindromic Substring** (`LongestPalindromicSubstring5.cs`) - Expand around center, odd and even lengths [LeetCode 5](https://leetcode.com/problems/longest-palindromic-substring/)
+- **Palindromic Substrings** (`PalindromicSubstrings647.cs`) - Count palindromic substrings by expanding around center [LeetCode 647](https://leetcode.com/problems/palindromic-substrings/)
+
+#### Sliding Window
+- **Sliding Window** (`SlidingWindow.cs`) - Fixed and variable size window techniques
+  - Fixed size: max subarray sum, max subarray product, count subarrays with target sum
+  - Fixed size with hashing: substring anagram detection and counting
+  - Variable size: subarray with a given sum, longest subarray with a given sum, longest substring without repeated characters
+- **Maximum Average Subarray I** (`MaximumAverageSubarrayI643.cs`) - Fixed size window average [LeetCode 643](https://leetcode.com/problems/maximum-average-subarray-i/)
+- **Longest Substring Without Repeating Characters** (`LongestSubstringWithoutRepeatingCharacters3.cs`) - Variable size window with a character counter [LeetCode 3](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
 #### Binary Trees
 - **Binary Trees** (`BinaryTree.cs`) - DFS/BFS traversals, tree operations
@@ -44,6 +57,9 @@ Located in `dotnet/Dsa/`, this section includes:
   - Sum of values (iterative and recursive)
   - Reverse list (iterative and recursive)
   - Cycle detection (HashSet approach and Floyd's fast/slow pointer)
+- **Doubly Linked List** (`DoublyLinkedList.cs`) - Generic doubly linked list with head/tail tracking
+  - AddFirst, AddLast, Remove, RemoveLast
+  - First, Last and Count access
 
 #### Backtracking
 - **Backtracking** (`Backtracking.cs`) - Generate all possible strings of length n from a set of letters
