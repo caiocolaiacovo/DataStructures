@@ -118,4 +118,17 @@ public class SlidingWindowTest
         var result = SlidingWindow.LongestSubarraySum(nums, target);
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData("abcabcqbb", 4)]
+    [InlineData("forgeonwards", 9)]
+    [InlineData("tmmzuxt", 5)]
+    [InlineData("racecarisgreatness", 8)]
+    [InlineData("zzzzzz", 1)]
+    [InlineData("zqzzzz", 2)]
+    public void TestLongestUniqueSubstring(string s, int expected)
+    {
+        var result = SlidingWindow.LongestUniqueSubstring(s);
+        Assert.Equal(expected, result);
+    }
 }
